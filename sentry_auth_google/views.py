@@ -26,11 +26,11 @@ class FetchUser(AuthView):
         data = json.loads(body)
 
         if not data.get('domain'):
-            return helper.error(ERR_INVALID_DOMAIN)
+            return helper.error('domain not found')
 
         # a domain may not yet be configured as this could be the setup flow
         if CLIENT_DOMAIN and CLIENT_DOMAIN != data['domain']:
-            return helper.error(ERR_INVALID_DOMAIN)
+            return helper.error('config: %s data: %s' % (CLIENT_DOMAIN, data['domain']))
 
         helper.bind_state('user', data)
 
