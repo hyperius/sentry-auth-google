@@ -5,7 +5,7 @@ from sentry.auth.providers.oauth2 import (
 )
 
 from .constants import (
-    AUTHORIZE_URL, ACCESS_TOKEN_URL, CLIENT_ID, CLIENT_SECRET, SCOPE
+    AUTHORIZE_URL, ACCESS_TOKEN_URL, CLIENT_ID, CLIENT_SECRET, SCOPE, CLIENT_DOMAIN
 )
 from .views import FetchUser, GoogleConfigureView
 
@@ -51,7 +51,7 @@ class GoogleOAuth2Provider(OAuth2Provider):
                 client_id=self.client_id,
                 client_secret=self.client_secret,
             ),
-            FetchUser(domain=self.domain),
+            FetchUser(domain=CLIENT_DOMAIN),
         ]
 
     def get_refresh_token_url(self):
