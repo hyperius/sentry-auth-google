@@ -10,6 +10,7 @@ ACCESS_TOKEN_URL = 'https://www.googleapis.com/oauth2/v3/token'
 CLIENT_ID = getattr(settings, 'GOOGLE_CLIENT_ID', None)
 
 CLIENT_SECRET = getattr(settings, 'GOOGLE_CLIENT_SECRET', None)
+CLIENT_DOMAIN = getattr(settings, 'GOOGLE_CLIENT_DOMAIN', None)
 
 ERR_INVALID_DOMAIN = 'The domain for your Google account is not allowed to authenticate with this provider.'
 

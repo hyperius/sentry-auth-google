@@ -5,7 +5,7 @@ from sentry.http import safe_urlopen, safe_urlread
 from sentry.utils import json
 from urllib import urlencode
 
-from .constants import ERR_INVALID_DOMAIN, USER_DETAILS_ENDPOINT
+from .constants import ERR_INVALID_DOMAIN, USER_DETAILS_ENDPOINT, CLIENT_DOMAIN
 
 
 class FetchUser(AuthView):
@@ -29,7 +29,7 @@ class FetchUser(AuthView):
             return helper.error(ERR_INVALID_DOMAIN)
 
         # a domain may not yet be configured as this could be the setup flow
-        if self.domain and self.domain != data['domain']:
+        if CLIENT_DOMAIN and CLIENT_DOMAIN != data['domain']:
             return helper.error(ERR_INVALID_DOMAIN)
 
         helper.bind_state('user', data)
